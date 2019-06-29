@@ -18,6 +18,7 @@
 		DBFD410422C7CD520054253B /* DrinkWaterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFD410322C7CD520054253B /* DrinkWaterUITests.swift */; };
 		DBFD411222C7CDA90054253B /* homeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBFD411122C7CDA90054253B /* homeViewController.xib */; };
 		DBFD411622C7E7540054253B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DBFD411522C7E7540054253B /* GoogleService-Info.plist */; };
+		DBFD411822C7F2030054253B /* drinkMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFD411722C7F2030054253B /* drinkMessages.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		DBFD410522C7CD520054253B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DBFD411122C7CDA90054253B /* homeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = homeViewController.xib; sourceTree = "<group>"; };
 		DBFD411522C7E7540054253B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DBFD411722C7F2030054253B /* drinkMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = drinkMessages.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 			children = (
 				DBFD40E322C7CD520054253B /* AppDelegate.swift */,
 				DBFD40E522C7CD520054253B /* homeViewController.swift */,
+				DBFD411722C7F2030054253B /* drinkMessages.swift */,
 				DBFD411122C7CDA90054253B /* homeViewController.xib */,
 				DBFD40EA22C7CD520054253B /* Assets.xcassets */,
 				DBFD40EC22C7CD520054253B /* LaunchScreen.storyboard */,
@@ -386,6 +389,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBFD411822C7F2030054253B /* drinkMessages.swift in Sources */,
 				DBFD40E622C7CD520054253B /* homeViewController.swift in Sources */,
 				DBFD40E422C7CD520054253B /* AppDelegate.swift in Sources */,
 			);
