@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 import Contacts
 import MessageUI
 import FirebaseDatabase
@@ -55,22 +56,18 @@ class homeViewController: UIViewController, MFMessageComposeViewControllerDelega
         
         print (message)
         
-        if let accountSID = ProcessInfo.processInfo.environment["AC72ce0e1e8873389e9467edfd9eabd86e"],
-            let authToken = ProcessInfo.processInfo.environment["515e1ee53415c2619f8f2290c92d9ba8"] {
+        let accountSID = "AC72ce0e1e8873389e9467edfd9eabd86e"
+        let authToken = "515e1ee53415c2619f8f2290c92d9ba8"
+        let url = "https://api.twilio.com/2010-04-01/Accounts/\(accountSID)/Messages"
+        let parameters = ["From": "+12133194018", "To": "+12136055210", "Body": "Drink Water Slut test!"]
             
-            let url = "https://api.twilio.com/2010-04-01/Accounts/\(accountSID)/Messages"
-            let parameters = ["From": "+12133194018", "To": "+12136055210", "Body": "Drink Water Slut test!"]
-            
-            Alamofire.request(url, method: .post, parameters: parameters)
-                .authenticate(user: accountSID, password: authToken)
-                .responseJSON { response in
-                    debugPrint(response)
-                    print(response)
-            }
+        Alamofire.request(url, method: .post, parameters: parameters)
+            .authenticate(user: accountSID, password: authToken)
+            .responseJSON { response in
+                debugPrint(response)
+                print("RESPONSE", response)
         }
 
-        
-        
         let reference = Database.database().reference()
         reference.child(UIDevice.current.identifierForVendor!.uuidString).child("Contact").updateChildValues(["Phone Number" : message])
         
