@@ -13,7 +13,10 @@ import FirebaseDatabase
 
 class homeViewController: UIViewController, MFMessageComposeViewControllerDelegate {
 
-    @IBOutlet weak var drinkWaterButton: UIButton!
+    @IBOutlet weak var sendItButton: UIButton!
+    @IBOutlet weak var contactToSendTo: UILabel!
+    @IBOutlet weak var contactsTableView: UITableView!
+    @IBOutlet weak var titleLabel: UILabel!
     private var contactList = [CNContact]()
     
     init(){
@@ -27,6 +30,14 @@ class homeViewController: UIViewController, MFMessageComposeViewControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         self.fetchContacts()
+        self.view.backgroundColor = UIColor.white
+        self.titleLabel.textColor = UIColor.init(red: 11/255, green: 112/255, blue: 255/255, alpha: 1)
+        self.sendItButton.tintColor = UIColor.init(red: 11/255, green: 112/255, blue: 255/255, alpha: 1)
+        self.contactToSendTo.textColor = UIColor.init(red: 11/255, green: 112/255, blue: 255/255, alpha: 1)
+        
+        self.sendItButton.isEnabled = false
+        self.contactToSendTo.isHidden = true
+        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
@@ -91,6 +102,10 @@ class homeViewController: UIViewController, MFMessageComposeViewControllerDelega
     
     @IBAction func settingsButtonPressed(_ sender: Any) {
         print("Settings")
+    }
+    
+    class ContactCell : UITableViewCell {
+        
     }
     
 }

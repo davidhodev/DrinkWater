@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="homeViewController" customModule="DrinkWater" customModuleProvider="target">
             <connections>
-                <outlet property="drinkWaterButton" destination="cec-8G-aQM" id="bK5-HL-bZF"/>
+                <outlet property="contactToSendTo" destination="9IC-nf-wp2" id="0r7-tF-PV6"/>
+                <outlet property="contactsTableView" destination="0mu-MC-99l" id="ycu-JN-hNQ"/>
+                <outlet property="sendItButton" destination="qcC-2C-Ep4" id="f1w-1K-G7y"/>
+                <outlet property="titleLabel" destination="SYl-gK-n4P" id="Skn-qE-twV"/>
                 <outlet property="view" destination="iN0-l3-epB" id="ZDF-74-Z3T"/>
             </connections>
         </placeholder>
@@ -21,40 +24,48 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cec-8G-aQM">
-                    <rect key="frame" x="171" y="318.5" width="30" height="30"/>
-                    <state key="normal" title="HI"/>
-                    <connections>
-                        <action selector="drinkWaterButtonPressed:" destination="-1" eventType="touchUpInside" id="CYd-rD-6fW"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Egk-3I-pqP">
-                    <rect key="frame" x="300" y="30" width="65" height="65"/>
-                    <state key="normal" backgroundImage="Settings Button"/>
-                    <connections>
-                        <action selector="settingsButtonPressed:" destination="-1" eventType="touchUpInside" id="UIY-Ic-pI1"/>
-                    </connections>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Drink Water Slut" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Hn-uP-IXx">
-                    <rect key="frame" x="124" y="219" width="124" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remind a Slut to Drink Water" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYl-gK-n4P">
+                    <rect key="frame" x="16" y="70" width="327" height="83.5"/>
+                    <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="32"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0mu-MC-99l">
+                    <rect key="frame" x="16" y="217" width="343" height="450"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9IC-nf-wp2">
+                    <rect key="frame" x="16" y="173.5" width="44.5" height="23.5"/>
+                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qcC-2C-Ep4">
+                    <rect key="frame" x="263" y="168" width="80" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="LBf-t0-EWi"/>
+                        <constraint firstAttribute="height" constant="35" id="yTt-Pm-Kie"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="17"/>
+                    <state key="normal" title="Send It"/>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Egk-3I-pqP" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="6jy-rZ-i0p"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Egk-3I-pqP" secondAttribute="trailing" constant="10" id="jOO-b5-sA9"/>
-                <constraint firstItem="cec-8G-aQM" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="kFR-DZ-E5i"/>
-                <constraint firstItem="cec-8G-aQM" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="la3-Am-C2j"/>
+                <constraint firstItem="9IC-nf-wp2" firstAttribute="top" secondItem="SYl-gK-n4P" secondAttribute="bottom" constant="20" id="2WL-VM-uu5"/>
+                <constraint firstItem="SYl-gK-n4P" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="50" id="Nxu-p1-lZq"/>
+                <constraint firstItem="SYl-gK-n4P" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="O8u-NZ-HCY"/>
+                <constraint firstAttribute="trailing" secondItem="SYl-gK-n4P" secondAttribute="trailing" constant="32" id="SNi-UX-WSx"/>
+                <constraint firstItem="0mu-MC-99l" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="T6F-lg-1n7"/>
+                <constraint firstItem="qcC-2C-Ep4" firstAttribute="centerY" secondItem="9IC-nf-wp2" secondAttribute="centerY" id="eoA-6U-Dqt"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="0mu-MC-99l" secondAttribute="bottom" id="igd-zR-gju"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qcC-2C-Ep4" secondAttribute="trailing" constant="32" id="lGX-hw-BPm"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="0mu-MC-99l" secondAttribute="trailing" constant="16" id="uiW-xn-yNz"/>
+                <constraint firstItem="9IC-nf-wp2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="xfP-K5-jly"/>
+                <constraint firstItem="0mu-MC-99l" firstAttribute="top" secondItem="9IC-nf-wp2" secondAttribute="bottom" constant="20" id="yok-N2-CXE"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="34.5" y="54.5"/>
         </view>
     </objects>
-    <resources>
-        <image name="Settings Button" width="100" height="103"/>
-    </resources>
 </document>
