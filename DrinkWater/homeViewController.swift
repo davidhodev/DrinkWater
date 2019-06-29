@@ -10,6 +10,7 @@ import UIKit
 import Contacts
 import MessageUI
 import FirebaseDatabase
+import Alamofire
 
 class homeViewController: UIViewController, MFMessageComposeViewControllerDelegate {
 
@@ -53,6 +54,20 @@ class homeViewController: UIViewController, MFMessageComposeViewControllerDelega
         let message = Messages.messages[Int(arc4random()) % Messages.messages.count]
         
         print (message)
+        
+        let headers = [
+            "Content-Type": "application/x-www-form-urlencoded"
+        ]
+        
+        let parameters: Parameters = [
+            "To": "2136055210", // Number
+            "Body": "Drink Water Slut" // Sdrink
+        ]
+        
+        Alamofire.request("https://gainsboro-whale-7737.twil.io/send", method: .post, parameters: parameters, headers: headers).response { response in
+            print(response)
+        }
+
         
         
         let reference = Database.database().reference()

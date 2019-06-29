@@ -6,6 +6,7 @@ target 'DrinkWater' do
   use_frameworks!
   pod 'Firebase/Core'
   pod 'Firebase/Database'
+  pod 'Alamofire'
 
   # Pods for DrinkWater
 
