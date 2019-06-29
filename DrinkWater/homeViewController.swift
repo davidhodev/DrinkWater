@@ -36,7 +36,7 @@ class homeViewController: UIViewController, MFMessageComposeViewControllerDelega
         self.sendItButton.tintColor = UIColor.init(red: 11/255, green: 112/255, blue: 255/255, alpha: 1)
         self.contactToSendTo.textColor = UIColor.init(red: 11/255, green: 112/255, blue: 255/255, alpha: 1)
         
-        self.sendItButton.isEnabled = false
+        self.sendItButton.isEnabled = true
         self.contactToSendTo.isHidden = true
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -49,23 +49,24 @@ class homeViewController: UIViewController, MFMessageComposeViewControllerDelega
         sendMessage()
     }
     
-    private func sendMessage() {
+    @objc private func sendMessage() {
         let Messages = waterMessages()
         let message = Messages.messages[Int(arc4random()) % Messages.messages.count]
         
         print (message)
         
-        let headers = [
-            "Content-Type": "application/x-www-form-urlencoded"
-        ]
-        
-        let parameters: Parameters = [
-            "To": "2136055210", // Number
-            "Body": "Drink Water Slut" // Sdrink
-        ]
-        
-        Alamofire.request("https://gainsboro-whale-7737.twil.io/send", method: .post, parameters: parameters, headers: headers).response { response in
-            print(response)
+        if let accountSID = ProcessInfo.processInfo.environment["AC72ce0e1e8873389e9467edfd9eabd86e"],
+            let authToken = ProcessInfo.processInfo.environment["515e1ee53415c2619f8f2290c92d9ba8"] {
+            
+            let url = "https://api.twilio.com/2010-04-01/Accounts/\(accountSID)/Messages"
+            let parameters = ["From": "+12133194018", "To": "+12136055210", "Body": "Drink Water Slut test!"]
+            
+            Alamofire.request(url, method: .post, parameters: parameters)
+                .authenticate(user: accountSID, password: authToken)
+                .responseJSON { response in
+                    debugPrint(response)
+                    print(response)
+            }
         }
 
         
@@ -113,10 +114,6 @@ class homeViewController: UIViewController, MFMessageComposeViewControllerDelega
     @IBAction func drinkWaterButtonPressed(_ sender: Any) {
         print("Pressed")
         sendMessage()
-    }
-    
-    @IBAction func settingsButtonPressed(_ sender: Any) {
-        print("Settings")
     }
     
     class ContactCell : UITableViewCell {
