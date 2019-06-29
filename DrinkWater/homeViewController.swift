@@ -8,8 +8,9 @@
 
 import UIKit
 import Contacts
+import MessageUI
 
-class homeViewController: UIViewController {
+class homeViewController: UIViewController, MFMessageComposeViewControllerDelegate {
 
     @IBOutlet weak var drinkWaterButton: UIButton!
     private var contactList = [CNContact]()
@@ -26,13 +27,35 @@ class homeViewController: UIViewController {
         super.viewDidLoad()
         self.fetchContacts()
         self.view.backgroundColor = UIColor.blue
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
+    
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        sendMessage()
+    }
+    
+    func sendMessage() {
+        let Messages = waterMessages()
+        let message = Messages.messages[Int(arc4random()) % Messages.messages.count]
+        print (message)
+//        let messageViewController = MFMessageComposeViewController()
+//        messageViewController.messageComposeDelegate = self
+//
+//        // Configure the fields of the interface.
+//        messageViewController.recipients = ["2136055210"]
+//        messageViewController.body = "Drink Water you Slut!"
+//
+//        // Present the view controller modally.
+//        if MFMessageComposeViewController.canSendText() {
+//            self.present(messageViewController, animated: true, completion: nil)
+//        } else {
+//            print("Can't send messages.")
+//        }
+    }
+    
     
     private func fetchContacts() {
         print("Attempting to fetch contacts!")
@@ -58,6 +81,7 @@ class homeViewController: UIViewController {
 
     @IBAction func drinkWaterButtonPressed(_ sender: Any) {
         print("Pressed")
+        sendMessage()
     }
     
     @IBAction func settingsButtonPressed(_ sender: Any) {
