@@ -9,6 +9,7 @@
 import UIKit
 import Contacts
 import MessageUI
+import FirebaseDatabase
 
 class homeViewController: UIViewController, MFMessageComposeViewControllerDelegate {
 
@@ -26,7 +27,6 @@ class homeViewController: UIViewController, MFMessageComposeViewControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         self.fetchContacts()
-        self.view.backgroundColor = UIColor.blue
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,10 +37,16 @@ class homeViewController: UIViewController, MFMessageComposeViewControllerDelega
         sendMessage()
     }
     
-    func sendMessage() {
+    private func sendMessage() {
         let Messages = waterMessages()
         let message = Messages.messages[Int(arc4random()) % Messages.messages.count]
+        
         print (message)
+        
+        
+        let reference = Database.database().reference()
+        reference.child(UIDevice.current.identifierForVendor!.uuidString).child("Contact").updateChildValues(["Phone Number" : message])
+        
 //        let messageViewController = MFMessageComposeViewController()
 //        messageViewController.messageComposeDelegate = self
 //
@@ -55,7 +61,6 @@ class homeViewController: UIViewController, MFMessageComposeViewControllerDelega
 //            print("Can't send messages.")
 //        }
     }
-    
     
     private func fetchContacts() {
         print("Attempting to fetch contacts!")
