@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1359C8CE58C0C845F521244A /* Pods_DrinkWater.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD5DD85CFBE28052850F4EE /* Pods_DrinkWater.framework */; };
+		700C493722C8336200DC9446 /* ContactsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700C493522C8336200DC9446 /* ContactsCell.swift */; };
+		700C493822C8336200DC9446 /* ContactsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 700C493622C8336200DC9446 /* ContactsCell.xib */; };
 		9AE2DA2372201DF9B771674B /* Pods_DrinkWaterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA5340E7728CEB141B4B961 /* Pods_DrinkWaterTests.framework */; };
 		DAD6EF497B26C5A2E7A5825C /* Pods_DrinkWaterUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C88785DE2E720461FADF42F0 /* Pods_DrinkWaterUITests.framework */; };
 		DBFD40E422C7CD520054253B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFD40E322C7CD520054253B /* AppDelegate.swift */; };
@@ -42,6 +44,8 @@
 		0B7EE2FE54EF5E0E968AE4E2 /* Pods-DrinkWaterUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrinkWaterUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DrinkWaterUITests/Pods-DrinkWaterUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2D96F21F875800E5F2007947 /* Pods-DrinkWater.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrinkWater.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DrinkWater/Pods-DrinkWater.debug.xcconfig"; sourceTree = "<group>"; };
 		4BD5DD85CFBE28052850F4EE /* Pods_DrinkWater.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrinkWater.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		700C493522C8336200DC9446 /* ContactsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsCell.swift; sourceTree = "<group>"; };
+		700C493622C8336200DC9446 /* ContactsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactsCell.xib; sourceTree = "<group>"; };
 		72DD323FE8CFB28148239B65 /* Pods-DrinkWaterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrinkWaterTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DrinkWaterTests/Pods-DrinkWaterTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9B383D1939957D293D412D78 /* Pods-DrinkWater.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrinkWater.release.xcconfig"; path = "Pods/Target Support Files/Pods-DrinkWater/Pods-DrinkWater.release.xcconfig"; sourceTree = "<group>"; };
 		A51BB6F31DE62116535A25D1 /* Pods-DrinkWaterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrinkWaterTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DrinkWaterTests/Pods-DrinkWaterTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -149,6 +153,8 @@
 				DBFD40EC22C7CD520054253B /* LaunchScreen.storyboard */,
 				DBFD40EF22C7CD520054253B /* Info.plist */,
 				DBFD411522C7E7540054253B /* GoogleService-Info.plist */,
+				700C493522C8336200DC9446 /* ContactsCell.swift */,
+				700C493622C8336200DC9446 /* ContactsCell.xib */,
 			);
 			path = DrinkWater;
 			sourceTree = "<group>";
@@ -286,6 +292,7 @@
 				DBFD411622C7E7540054253B /* GoogleService-Info.plist in Resources */,
 				DBFD40EB22C7CD520054253B /* Assets.xcassets in Resources */,
 				DBFD411222C7CDA90054253B /* homeViewController.xib in Resources */,
+				700C493822C8336200DC9446 /* ContactsCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +396,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				700C493722C8336200DC9446 /* ContactsCell.swift in Sources */,
 				DBFD411822C7F2030054253B /* drinkMessages.swift in Sources */,
 				DBFD40E622C7CD520054253B /* homeViewController.swift in Sources */,
 				DBFD40E422C7CD520054253B /* AppDelegate.swift in Sources */,
