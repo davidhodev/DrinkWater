@@ -16,6 +16,8 @@ class homeViewController: UIViewController, MFMessageComposeViewControllerDelega
     @IBOutlet weak var contactToSendTo: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contactsTableView: UITableView!
+    private let contactCellID = "ContactCell"
+    
     private var contactList = [CNContact]()
     
     init(){
@@ -29,10 +31,13 @@ class homeViewController: UIViewController, MFMessageComposeViewControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.fetchContacts()
-        contactsTableView.register(ContactCell.self, forCellReuseIdentifier: "ContactCell")
+        contactsTableView.register(UINib.init(nibName: contactCellID, bundle: nil), forCellReuseIdentifier: contactCellID)
         contactsTableView.delegate = self
         contactsTableView.dataSource = self
+        contactsTableView.rowHeight = UITableViewAutomaticDimension
+        contactsTableView.separatorColor = UIColor.clear
+        
+        self.fetchContacts()
         
         self.view.backgroundColor = UIColor.init(red: 11/255, green: 112/255, blue: 255/255, alpha: 1)
         self.titleLabel.textColor = UIColor.white
@@ -41,6 +46,8 @@ class homeViewController: UIViewController, MFMessageComposeViewControllerDelega
         
         self.sendItButton.isEnabled = false
         self.contactToSendTo.isHidden = true
+        
+        contactsTableView.reloadData()
         
         
     }
@@ -95,14 +102,16 @@ class homeViewController: UIViewController, MFMessageComposeViewControllerDelega
         }
     }
 
-    @IBAction func drinkWaterButtonPressed(_ sender: Any) {
-        print("Pressed")
-        sendMessage()
-    }
+//    @IBAction func drinkWaterButtonPressed(_ sender: Any) {
+//        print("Pressed")
+//        sendMessage()
+//    }
+//
+//    @IBAction func settingsButtonPressed(_ sender: Any) {
+//        print("Settings")
+//    }
     
-    @IBAction func settingsButtonPressed(_ sender: Any) {
-        print("Settings")
-    }
+    
     
 }
 
@@ -119,6 +128,10 @@ extension homeViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell") as! ContactCell
         cell.setCell(contact: contact)
         return cell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
     
