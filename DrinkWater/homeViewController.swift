@@ -40,6 +40,7 @@ class homeViewController: UIViewController, MFMessageComposeViewControllerDelega
         self.fetchContacts()
         
         self.view.backgroundColor = UIColor.init(red: 11/255, green: 112/255, blue: 255/255, alpha: 1)
+        self.contactsTableView.backgroundColor = UIColor.clear
         self.titleLabel.textColor = UIColor.white
         self.sendItButton.tintColor = UIColor.white
         self.contactToSendTo.textColor = UIColor.white
@@ -134,6 +135,9 @@ extension homeViewController: UITableViewDataSource, UITableViewDelegate {
         return 1
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
+    }
     
 }
 

@@ -12,11 +12,14 @@ import Contacts
 class ContactCell: UITableViewCell {
 
     @IBOutlet weak var test: UILabel!
-    
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var captionLabel: UILabel!
     
     func setCell(contact: CNContact){
         print("cool")
         print(contact.givenName)
+        self.layer.backgroundColor = UIColor.clear.cgColor
         test.text = contact.givenName
+        captionLabel.text = "Hella Thirsty"
     }
 }
