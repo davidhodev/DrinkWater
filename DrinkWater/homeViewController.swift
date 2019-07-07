@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import Foundation
 import Contacts
 import MessageUI
+import FirebaseDatabase
+import Alamofire
 
 class homeViewController: UIViewController, MFMessageComposeViewControllerDelegate {
 
@@ -45,7 +48,7 @@ class homeViewController: UIViewController, MFMessageComposeViewControllerDelega
         self.sendItButton.tintColor = UIColor.white
         self.contactToSendTo.textColor = UIColor.white
         
-        self.sendItButton.isEnabled = false
+        self.sendItButton.isEnabled = true
         self.contactToSendTo.isHidden = true
         
         contactsTableView.reloadData()
@@ -61,10 +64,27 @@ class homeViewController: UIViewController, MFMessageComposeViewControllerDelega
         sendMessage()
     }
     
-    func sendMessage() {
+    @objc private func sendMessage() {
         let Messages = waterMessages()
         let message = Messages.messages[Int(arc4random()) % Messages.messages.count]
+        
         print (message)
+        
+        let accountSID = "AC72ce0e1e8873389e9467edfd9eabd86e"
+        let authToken = "515e1ee53415c2619f8f2290c92d9ba8"
+        let url = "https://api.twilio.com/2010-04-01/Accounts/\(accountSID)/Messages"
+        let parameters = ["From": "+12133194018", "To": "+12136055210", "Body": "Drink Water Slut test!"]
+            
+        Alamofire.request(url, method: .post, parameters: parameters)
+            .authenticate(user: accountSID, password: authToken)
+            .responseJSON { response in
+                debugPrint(response)
+                print("RESPONSE", response)
+        }
+
+        let reference = Database.database().reference()
+        reference.child(UIDevice.current.identifierForVendor!.uuidString).child("Contact").updateChildValues(["Phone Number" : message])
+        
 //        let messageViewController = MFMessageComposeViewController()
 //        messageViewController.messageComposeDelegate = self
 //
@@ -79,7 +99,6 @@ class homeViewController: UIViewController, MFMessageComposeViewControllerDelega
 //            print("Can't send messages.")
 //        }
     }
-    
     
     private func fetchContacts() {
         print("Attempting to fetch contacts!")
@@ -122,7 +141,7 @@ extension homeViewController: UITableViewDataSource, UITableViewDelegate {
         print(contactList.count)
         return contactList.count
     }
-    
+  
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let contact = contactList[indexPath.row]
         print(contact.givenName)
