@@ -17,8 +17,10 @@ class homeViewController: UIViewController, MFMessageComposeViewControllerDelega
 
     @IBOutlet weak var sendItButton: UIButton!
     @IBOutlet weak var contactToSendTo: UILabel!
-    @IBOutlet weak var contactsTableView: UITableView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var contactsTableView: UITableView!
+    private let contactCellID = "ContactCell"
+    
     private var contactList = [CNContact]()
     
     init(){
@@ -31,15 +33,27 @@ class homeViewController: UIViewController, MFMessageComposeViewControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        contactsTableView.register(UINib.init(nibName: contactCellID, bundle: nil), forCellReuseIdentifier: contactCellID)
+        contactsTableView.delegate = self
+        contactsTableView.dataSource = self
+        contactsTableView.rowHeight = UITableViewAutomaticDimension
+        contactsTableView.separatorColor = UIColor.clear
+        
         self.fetchContacts()
-        self.view.backgroundColor = UIColor.white
-        self.titleLabel.textColor = UIColor.init(red: 11/255, green: 112/255, blue: 255/255, alpha: 1)
-        self.sendItButton.tintColor = UIColor.init(red: 11/255, green: 112/255, blue: 255/255, alpha: 1)
-        self.contactToSendTo.textColor = UIColor.init(red: 11/255, green: 112/255, blue: 255/255, alpha: 1)
+        
+        self.view.backgroundColor = UIColor.init(red: 11/255, green: 112/255, blue: 255/255, alpha: 1)
+        self.contactsTableView.backgroundColor = UIColor.clear
+        self.titleLabel.textColor = UIColor.white
+        self.sendItButton.tintColor = UIColor.white
+        self.contactToSendTo.textColor = UIColor.white
         
         self.sendItButton.isEnabled = true
         self.contactToSendTo.isHidden = true
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        contactsTableView.reloadData()
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -108,13 +122,40 @@ class homeViewController: UIViewController, MFMessageComposeViewControllerDelega
         }
     }
 
-    @IBAction func drinkWaterButtonPressed(_ sender: Any) {
-        print("Pressed")
-        sendMessage()
+//    @IBAction func drinkWaterButtonPressed(_ sender: Any) {
+//        print("Pressed")
+//        sendMessage()
+//    }
+//
+//    @IBAction func settingsButtonPressed(_ sender: Any) {
+//        print("Settings")
+//    }
+    
+    
+    
+}
+
+extension homeViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(contactList.count)
+        return contactList.count
+    }
+  
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let contact = contactList[indexPath.row]
+        print(contact.givenName)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell") as! ContactCell
+        cell.setCell(contact: contact)
+        return cell
     }
     
-    class ContactCell : UITableViewCell {
-        
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
     }
     
 }
