@@ -13,7 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="homeViewController" customModule="DrinkWater" customModuleProvider="target">
             <connections>
                 <outlet property="contactToSendTo" destination="9IC-nf-wp2" id="0r7-tF-PV6"/>
-                <outlet property="contactsTableView" destination="0mu-MC-99l" id="ycu-JN-hNQ"/>
+                <outlet property="contactsTableView" destination="txh-4T-uxS" id="lwj-Pv-TQm"/>
                 <outlet property="sendItButton" destination="qcC-2C-Ep4" id="f1w-1K-G7y"/>
                 <outlet property="titleLabel" destination="SYl-gK-n4P" id="Skn-qE-twV"/>
                 <outlet property="view" destination="iN0-l3-epB" id="ZDF-74-Z3T"/>
@@ -30,10 +30,6 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0mu-MC-99l">
-                    <rect key="frame" x="16" y="217" width="343" height="450"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9IC-nf-wp2">
                     <rect key="frame" x="16" y="173.5" width="44.5" height="23.5"/>
                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
@@ -49,20 +45,24 @@
                     <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="17"/>
                     <state key="normal" title="Send It"/>
                 </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="txh-4T-uxS">
+                    <rect key="frame" x="0.0" y="223" width="375" height="444"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="9IC-nf-wp2" firstAttribute="top" secondItem="SYl-gK-n4P" secondAttribute="bottom" constant="20" id="2WL-VM-uu5"/>
+                <constraint firstItem="txh-4T-uxS" firstAttribute="top" secondItem="qcC-2C-Ep4" secondAttribute="bottom" constant="20" id="4GE-1s-pIT"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="txh-4T-uxS" secondAttribute="bottom" id="Bk8-vL-atJ"/>
                 <constraint firstItem="SYl-gK-n4P" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="50" id="Nxu-p1-lZq"/>
                 <constraint firstItem="SYl-gK-n4P" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="O8u-NZ-HCY"/>
                 <constraint firstAttribute="trailing" secondItem="SYl-gK-n4P" secondAttribute="trailing" constant="32" id="SNi-UX-WSx"/>
-                <constraint firstItem="0mu-MC-99l" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="T6F-lg-1n7"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="txh-4T-uxS" secondAttribute="trailing" id="SdE-hO-eMZ"/>
+                <constraint firstItem="txh-4T-uxS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="UHa-Fx-H3m"/>
                 <constraint firstItem="qcC-2C-Ep4" firstAttribute="centerY" secondItem="9IC-nf-wp2" secondAttribute="centerY" id="eoA-6U-Dqt"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="0mu-MC-99l" secondAttribute="bottom" id="igd-zR-gju"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qcC-2C-Ep4" secondAttribute="trailing" constant="32" id="lGX-hw-BPm"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="0mu-MC-99l" secondAttribute="trailing" constant="16" id="uiW-xn-yNz"/>
                 <constraint firstItem="9IC-nf-wp2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="xfP-K5-jly"/>
-                <constraint firstItem="0mu-MC-99l" firstAttribute="top" secondItem="9IC-nf-wp2" secondAttribute="bottom" constant="20" id="yok-N2-CXE"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="34.5" y="54.5"/>

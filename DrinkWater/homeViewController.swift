@@ -14,8 +14,8 @@ class homeViewController: UIViewController, MFMessageComposeViewControllerDelega
 
     @IBOutlet weak var sendItButton: UIButton!
     @IBOutlet weak var contactToSendTo: UILabel!
-    @IBOutlet weak var contactsTableView: UITableView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var contactsTableView: UITableView!
     private var contactList = [CNContact]()
     
     init(){
@@ -28,19 +28,21 @@ class homeViewController: UIViewController, MFMessageComposeViewControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.fetchContacts()
+        contactsTableView.register(ContactCell.self, forCellReuseIdentifier: "ContactCell")
+        contactsTableView.delegate = self
+        contactsTableView.dataSource = self
+        
         self.view.backgroundColor = UIColor.init(red: 11/255, green: 112/255, blue: 255/255, alpha: 1)
         self.titleLabel.textColor = UIColor.white
         self.sendItButton.tintColor = UIColor.white
         self.contactToSendTo.textColor = UIColor.white
-        self.contactsTableView.backgroundColor = UIColor.init(red: 11/255, green: 112/255, blue: 255/255, alpha: 1)
         
         self.sendItButton.isEnabled = false
         self.contactToSendTo.isHidden = true
         
-        for index in 1...contactList.count {
-            contactsTableView.cellForRow(at: index) = Co
-        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -102,51 +104,23 @@ class homeViewController: UIViewController, MFMessageComposeViewControllerDelega
         print("Settings")
     }
     
-    private class ContactCell: NSObject {
-        
-        let viewController: ContactCell
-        let model: CNContact
-        
-        init(model: CNContact, viewController: ContactCell) {
-            self.model = model
-            self.viewController = viewController
-            super.init()
-        }
-        
-        override func cellClasses() -> [AnyClass] {
-            return [
-                ContactCell.self
-            ]
-        }
-        override func cellNibNames() -> [String] {
-            return [
-                "ContactCell",
-            ]
-        }
-        
-        
-        override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return Int(model.slotCount(forPlayerSection: UInt(playerSectionIndex)))
-        }
-        
-        override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 70.0
-        }
-        
-        override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: FSBestBallPlayerCell.defaultIdentifier, for: indexPath) as? FSBestBallPlayerCell else {
-                return FSTableViewCell.nilCell()
-            }
-            //            cell.layer.borderWidth = 8
-            //            cell.layer.cornerRadius = 8
-            //            cell.clipsToBounds = true
-            cell.backgroundColor = UIColor.clear
-            cell.model = model.slot(at: IndexPath(item: indexPath.row, section: playerSectionIndex))
-            cell.reloadData()
-            return cell
-        }
-        
+}
+
+extension homeViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(contactList.count)
+        return contactList.count
     }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let contact = contactList[indexPath.row]
+        print(contact.givenName)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell") as! ContactCell
+        cell.setCell(contact: contact)
+        return cell
+    }
+    
     
 }
 
