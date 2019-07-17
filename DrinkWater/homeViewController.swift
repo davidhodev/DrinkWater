@@ -20,8 +20,8 @@ class homeViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contactsTableView: UITableView!
     private let contactCellID = "ContactCell"
-    
     private var contactList = [CNContact]()
+    typealias finishedFetchingContacts = () -> ()
     
     init(){
         super.init(nibName: "homeViewController", bundle: nil)
@@ -51,7 +51,7 @@ class homeViewController: UIViewController {
         self.sendItButton.isEnabled = true
         self.contactToSendTo.isHidden = true
         
-        contactsTableView.reloadData()
+        
         
         
     }
@@ -105,12 +105,17 @@ class homeViewController: UIViewController {
             do {
                 try store.enumerateContacts(with: request, usingBlock: { (contact, stopPointer) in
                     self.contactList.append(contact)
+                    DispatchQueue.main.async {
+                        self.contactsTableView.reloadData()
+                    }
                 })
             } catch let error {
                 print ("Failed to enumerate contacts:", error)
             }
         }
     }
+    
+    
 
     @IBAction func drinkWaterButtonPressed(_ sender: Any) {
         print("Pressed")
