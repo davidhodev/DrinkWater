@@ -16,10 +16,12 @@ class ContactCell: UITableViewCell {
     @IBOutlet weak var captionLabel: UILabel!
     
     func setCell(contact: CNContact){
-        print("cool")
-        print(contact.givenName)
         self.layer.backgroundColor = UIColor.clear.cgColor
-        test.text = contact.givenName
-        captionLabel.text = "Hella Thirsty"
+        
+        test.text = "\(contact.givenName) \(contact.familyName)"
+        guard let phoneNumber = contact.phoneNumbers.first?.value.stringValue else {
+            return
+        }
+        captionLabel.text = phoneNumber
     }
 }

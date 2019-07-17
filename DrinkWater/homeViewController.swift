@@ -21,7 +21,7 @@ class homeViewController: UIViewController {
     @IBOutlet weak var contactsTableView: UITableView!
     private let contactCellID = "ContactCell"
     private var contactList = [CNContact]()
-    typealias finishedFetchingContacts = () -> ()
+    private var currentContact: CNContact?
     
     init(){
         super.init(nibName: "homeViewController", bundle: nil)
@@ -48,11 +48,8 @@ class homeViewController: UIViewController {
         self.sendItButton.tintColor = UIColor.white
         self.contactToSendTo.textColor = UIColor.white
         
-        self.sendItButton.isEnabled = true
+        self.sendItButton.isEnabled = false
         self.contactToSendTo.isHidden = true
-        
-        
-        
         
     }
 
@@ -61,7 +58,7 @@ class homeViewController: UIViewController {
     }
     
     
-    @objc private func sendMessage() {
+    @objc private func sendMessage(contact: CNContact) {
         let Messages = waterMessages()
         let message = Messages.messages[Int(arc4random()) % Messages.messages.count]
         
@@ -72,7 +69,7 @@ class homeViewController: UIViewController {
             if let value = snapshot.value as? String {
                 let authToken = value
                 let url = "https://api.twilio.com/2010-04-01/Accounts/\(accountSID)/Messages"
-                let parameters = ["From": "+12133194018", "To": "+12136055210", "Body": message]
+                let parameters = ["From": "+12133194018", "To": "\((contact.phoneNumbers[0].value as! CNPhoneNumber).value(forKey: "digits") as! String)", "Body": message]
                 
                 Alamofire.request(url, method: .post, parameters: parameters)
                     .authenticate(user: accountSID, password: authToken)
@@ -99,7 +96,7 @@ class homeViewController: UIViewController {
                 return
             }
             
-            let keys: [CNKeyDescriptor] = [CNContactGivenNameKey as CNKeyDescriptor]
+            let keys: [CNKeyDescriptor] = [CNContactGivenNameKey as CNKeyDescriptor, CNContactFormatter.descriptorForRequiredKeys(for: .fullName), CNContactPhoneNumbersKey as CNKeyDescriptor]
             let request = CNContactFetchRequest(keysToFetch: keys)
             
             do {
@@ -115,11 +112,17 @@ class homeViewController: UIViewController {
         }
     }
     
-    
+    func contactChosen(contact: CNContact){
+        self.currentContact = contact
+        self.sendItButton.isEnabled = true
+        self.contactToSendTo.text = contact.givenName
+        self.contactToSendTo.isHidden = false
+    }
 
     @IBAction func drinkWaterButtonPressed(_ sender: Any) {
-        print("Pressed")
-        sendMessage()
+        if let currentContact = self.currentContact {
+            sendMessage(contact: currentContact)
+        }
     }
 }
 
@@ -146,5 +149,8 @@ extension homeViewController: UITableViewDataSource, UITableViewDelegate {
         return 70
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.contactChosen(contact: contactList[indexPath.row])
+    }
 }
 
