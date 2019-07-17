@@ -50,6 +50,9 @@
                     </constraints>
                     <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="17"/>
                     <state key="normal" title="Send It"/>
+                    <connections>
+                        <action selector="drinkWaterButtonPressed:" destination="-1" eventType="touchUpInside" id="FCq-De-hhH"/>
+                    </connections>
                 </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="txh-4T-uxS">
                     <rect key="frame" x="0.0" y="223" width="375" height="444"/>
