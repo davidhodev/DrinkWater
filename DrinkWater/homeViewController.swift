@@ -51,8 +51,7 @@ class homeViewController: UIViewController {
         self.sendItButton.isEnabled = true
         self.contactToSendTo.isHidden = true
         
-        
-        
+//        let cool = NVActivityIndicatorView.init(frame: self.view.frame, type: .ballGridBeat, color: .red, padding: 10)
         
     }
 
