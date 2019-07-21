@@ -14,12 +14,22 @@ class ContactCell: UITableViewCell {
     @IBOutlet weak var test: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var captionLabel: UILabel!
+    @IBOutlet weak var thirstyMessageLabel: UILabel!
     
-    func setCell(contact: CNContact){
-        print("cool")
-        print(contact.givenName)
+    let thirstyMessages = ["Hella Thirsty", "Well Hydrated", "Drowning", "Has a Hydro", "Dehydrated", "Crazy Dehydrated", "Needs water ASAP", "Thirsty"]
+    
+    func setCell(contact: CNContact, isRecent: Bool){
         self.layer.backgroundColor = UIColor.clear.cgColor
-        test.text = contact.givenName
-        captionLabel.text = "Hella Thirsty"
+        
+        if isRecent {
+            thirstyMessageLabel.text = "\u{2605} " + thirstyMessages[Int.random(in: 0 ... 7)]
+        } else {
+            thirstyMessageLabel.text = thirstyMessages[Int.random(in: 0 ... 7)]
+        }
+        test.text = "\(contact.givenName) \(contact.familyName)"
+        guard let phoneNumber = contact.phoneNumbers.first?.value.stringValue else {
+            return
+        }
+        captionLabel.text = phoneNumber
     }
 }

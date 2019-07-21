@@ -38,13 +38,21 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jjk-Nc-Zex">
+                        <rect key="frame" x="136" y="22" width="22.5" height="12"/>
+                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="9"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="kfb-2t-Zct" firstAttribute="top" secondItem="0MS-gH-A1S" secondAttribute="bottom" constant="6" id="7yo-1O-Jok"/>
                     <constraint firstItem="kfb-2t-Zct" firstAttribute="leading" secondItem="BEv-en-sJC" secondAttribute="trailing" constant="16" id="Bxn-Vf-Zfe"/>
                     <constraint firstItem="0MS-gH-A1S" firstAttribute="top" secondItem="BEv-en-sJC" secondAttribute="top" id="F2w-Jn-H40"/>
                     <constraint firstItem="0MS-gH-A1S" firstAttribute="leading" secondItem="BEv-en-sJC" secondAttribute="trailing" constant="16" id="HhJ-51-CPk"/>
+                    <constraint firstItem="jjk-Nc-Zex" firstAttribute="leading" secondItem="0MS-gH-A1S" secondAttribute="trailing" constant="5" id="nzQ-69-xqQ"/>
                     <constraint firstItem="BEv-en-sJC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="pXo-Kg-QiV"/>
+                    <constraint firstItem="jjk-Nc-Zex" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="22" id="wF3-qI-sZV"/>
                     <constraint firstItem="BEv-en-sJC" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="zHC-kL-xWj"/>
                 </constraints>
             </tableViewCellContentView>
@@ -54,8 +62,9 @@
                 <outlet property="captionLabel" destination="kfb-2t-Zct" id="yG4-xl-oPS"/>
                 <outlet property="profileImage" destination="BEv-en-sJC" id="hdb-BY-wiS"/>
                 <outlet property="test" destination="0MS-gH-A1S" id="GQH-2x-mez"/>
+                <outlet property="thirstyMessageLabel" destination="jjk-Nc-Zex" id="LCj-h1-QMi"/>
             </connections>
-            <point key="canvasLocation" x="53.623188405797109" y="70.982142857142847"/>
+            <point key="canvasLocation" x="53.623188405797109" y="70.3125"/>
         </tableViewCell>
     </objects>
 </document>

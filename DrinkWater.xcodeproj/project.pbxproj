@@ -149,12 +149,12 @@
 				DBFD40E522C7CD520054253B /* homeViewController.swift */,
 				DBFD411722C7F2030054253B /* drinkMessages.swift */,
 				DBFD411122C7CDA90054253B /* homeViewController.xib */,
+				7049B25A22CD60CB00CA02BF /* ContactCell.swift */,
+				7049B25B22CD60CB00CA02BF /* ContactCell.xib */,
 				DBFD40EA22C7CD520054253B /* Assets.xcassets */,
 				DBFD40EC22C7CD520054253B /* LaunchScreen.storyboard */,
 				DBFD40EF22C7CD520054253B /* Info.plist */,
 				DBFD411522C7E7540054253B /* GoogleService-Info.plist */,
-				7049B25A22CD60CB00CA02BF /* ContactCell.swift */,
-				7049B25B22CD60CB00CA02BF /* ContactCell.xib */,
 			);
 			path = DrinkWater;
 			sourceTree = "<group>";

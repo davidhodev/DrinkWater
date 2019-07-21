@@ -20,8 +20,11 @@ class homeViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contactsTableView: UITableView!
     private let contactCellID = "ContactCell"
+    private var fetchedContactsList = [CNContact]()
     private var contactList = [CNContact]()
-    typealias finishedFetchingContacts = () -> ()
+    private var currentContact: CNContact?
+    private var recentContactsList = [CNContact]()
+    let userDefaults = UserDefaults.standard
     
     init(){
         super.init(nibName: "homeViewController", bundle: nil)
@@ -41,6 +44,14 @@ class homeViewController: UIViewController {
         contactsTableView.separatorColor = UIColor.clear
         
         self.fetchContacts()
+        if userDefaults.object(forKey: "recentContacts") != nil {
+            let decoded  = userDefaults.data(forKey: "recentContacts")
+            let decodedTeams = NSKeyedUnarchiver.unarchiveObject(with: decoded!) as! [CNContact]
+            recentContactsList = decodedTeams
+        }
+        
+        self.contactList = recentContactsList + fetchedContactsList
+        self.contactsTableView.reloadData()
         
         self.view.backgroundColor = UIColor.init(red: 11/255, green: 112/255, blue: 255/255, alpha: 1)
         self.contactsTableView.backgroundColor = UIColor.clear
@@ -48,22 +59,32 @@ class homeViewController: UIViewController {
         self.sendItButton.tintColor = UIColor.white
         self.contactToSendTo.textColor = UIColor.white
         
-        self.sendItButton.isEnabled = true
+        self.sendItButton.isEnabled = false
         self.contactToSendTo.isHidden = true
         
-//        let cool = NVActivityIndicatorView.init(frame: self.view.frame, type: .ballGridBeat, color: .red, padding: 10)
-        
+    
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    func reloadData() {
+        contactList = recentContactsList + fetchedContactsList
+        self.contactsTableView.reloadData()
+    }
     
-    @objc private func sendMessage() {
+    
+    @objc private func sendMessage(contact: CNContact) {
         let Messages = waterMessages()
         let message = Messages.messages[Int(arc4random()) % Messages.messages.count]
-        
+        recentContactsList.insert(contact, at: 0)
+        if recentContactsList.count > 5 {
+            recentContactsList.removeLast(1)
+        }
+        let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: recentContactsList)
+        userDefaults.set(encodedData, forKey: "recentContacts")
+        userDefaults.synchronize()
         print (message)
         let accountSID = "AC72ce0e1e8873389e9467edfd9eabd86e"
         
@@ -71,7 +92,7 @@ class homeViewController: UIViewController {
             if let value = snapshot.value as? String {
                 let authToken = value
                 let url = "https://api.twilio.com/2010-04-01/Accounts/\(accountSID)/Messages"
-                let parameters = ["From": "+12133194018", "To": "+12136055210", "Body": message]
+                let parameters = ["From": "+12133194018", "To": "\((contact.phoneNumbers[0].value as! CNPhoneNumber).value(forKey: "digits") as! String)", "Body": message]
                 
                 Alamofire.request(url, method: .post, parameters: parameters)
                     .authenticate(user: accountSID, password: authToken)
@@ -87,6 +108,7 @@ class homeViewController: UIViewController {
                 return
             }
         }
+        reloadData()
     }
     
     private func fetchContacts() {
@@ -98,12 +120,12 @@ class homeViewController: UIViewController {
                 return
             }
             
-            let keys: [CNKeyDescriptor] = [CNContactGivenNameKey as CNKeyDescriptor]
+            let keys: [CNKeyDescriptor] = [CNContactGivenNameKey as CNKeyDescriptor, CNContactFormatter.descriptorForRequiredKeys(for: .fullName), CNContactPhoneNumbersKey as CNKeyDescriptor]
             let request = CNContactFetchRequest(keysToFetch: keys)
             
             do {
                 try store.enumerateContacts(with: request, usingBlock: { (contact, stopPointer) in
-                    self.contactList.append(contact)
+                    self.fetchedContactsList.append(contact)
                     DispatchQueue.main.async {
                         self.contactsTableView.reloadData()
                     }
@@ -114,11 +136,17 @@ class homeViewController: UIViewController {
         }
     }
     
-    
+    func contactChosen(contact: CNContact){
+        self.currentContact = contact
+        self.sendItButton.isEnabled = true
+        self.contactToSendTo.text = contact.givenName
+        self.contactToSendTo.isHidden = false
+    }
 
     @IBAction func drinkWaterButtonPressed(_ sender: Any) {
-        print("Pressed")
-        sendMessage()
+        if let currentContact = self.currentContact {
+            sendMessage(contact: currentContact)
+        }
     }
 }
 
@@ -131,9 +159,12 @@ extension homeViewController: UITableViewDataSource, UITableViewDelegate {
   
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let contact = contactList[indexPath.row]
-        print(contact.givenName)
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell") as! ContactCell
-        cell.setCell(contact: contact)
+        if indexPath.row < recentContactsList.count {
+            cell.setCell(contact: contact, isRecent: true)
+        } else {
+            cell.setCell(contact: contact, isRecent: false)
+        }
         return cell
     }
     
@@ -145,5 +176,8 @@ extension homeViewController: UITableViewDataSource, UITableViewDelegate {
         return 70
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.contactChosen(contact: contactList[indexPath.row])
+    }
 }
 
