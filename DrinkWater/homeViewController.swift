@@ -22,6 +22,7 @@ class homeViewController: UIViewController {
     private let contactCellID = "ContactCell"
     private var contactList = [CNContact]()
     private var currentContact: CNContact?
+    var userName: String?
     
     init(){
         super.init(nibName: "homeViewController", bundle: nil)
@@ -51,6 +52,9 @@ class homeViewController: UIViewController {
         self.sendItButton.isEnabled = false
         self.contactToSendTo.isHidden = true
         
+        let fullName: String = UIDevice.current.name
+        self.userName = String(describing: fullName.split(separator: "’")[0])
+        print(userName)
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,7 +64,15 @@ class homeViewController: UIViewController {
     
     @objc private func sendMessage(contact: CNContact) {
         let Messages = waterMessages()
-        let message = Messages.messages[Int(arc4random()) % Messages.messages.count]
+        let message: String
+        if self.userName != nil {
+            message = "Your Friend, \(self.userName!) wants to remind you to Drink Water, so... \(Messages.messages[Int(arc4random()) % Messages.messages.count])"
+        }
+        else {
+            message = "Your anonymous friend wants to remind you to Drink Water, so... \(Messages.messages[Int(arc4random()) % Messages.messages.count])"
+        }
+        
+        
         
         print (message)
         let accountSID = "AC72ce0e1e8873389e9467edfd9eabd86e"
@@ -120,8 +132,17 @@ class homeViewController: UIViewController {
     }
 
     @IBAction func drinkWaterButtonPressed(_ sender: Any) {
+        
         if let currentContact = self.currentContact {
             sendMessage(contact: currentContact)
+            let alert = UIAlertController(title: "Congratulations!", message: "Your message has been sent!", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        else {
+            let alert = UIAlertController(title: "Uh Oh!", message: "Something went wrong, try again later!", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }
