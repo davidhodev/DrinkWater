@@ -44,12 +44,13 @@ class homeViewController: UIViewController {
         contactsTableView.rowHeight = UITableViewAutomaticDimension
         contactsTableView.separatorColor = UIColor.clear
         
-        self.fetchContacts()
         if userDefaults.object(forKey: "recentContacts") != nil {
             let decoded  = userDefaults.data(forKey: "recentContacts")
             let decodedTeams = NSKeyedUnarchiver.unarchiveObject(with: decoded!) as! [CNContact]
             recentContactsList = decodedTeams
         }
+        
+        self.fetchContacts()
         
         self.contactList = recentContactsList + fetchedContactsList
         self.contactsTableView.reloadData()
@@ -141,6 +142,7 @@ class homeViewController: UIViewController {
                 try store.enumerateContacts(with: request, usingBlock: { (contact, stopPointer) in
                     self.fetchedContactsList.append(contact)
                     DispatchQueue.main.async {
+                        self.contactList = self.recentContactsList + self.fetchedContactsList
                         self.contactsTableView.reloadData()
                     }
                 })
@@ -156,7 +158,7 @@ class homeViewController: UIViewController {
         self.contactToSendTo.text = contact.givenName
         self.contactToSendTo.isHidden = false
     }
-
+    
     @IBAction func drinkWaterButtonPressed(_ sender: Any) {
         
         if let currentContact = self.currentContact {
