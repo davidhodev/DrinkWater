@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Futura.ttc">
-            <string>Futura-Bold</string>
-            <string>Futura-Medium</string>
-        </array>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="homeViewController" customModule="DrinkWater" customModuleProvider="target">
             <connections>
@@ -30,32 +24,32 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remind a Friend to Drink Water" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYl-gK-n4P">
-                    <rect key="frame" x="16" y="70" width="327" height="83.5"/>
-                    <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="32"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friends Don't Let Friends Get Dehydrated" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYl-gK-n4P">
+                    <rect key="frame" x="16" y="50" width="334" height="148.5"/>
+                    <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="38"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9IC-nf-wp2">
-                    <rect key="frame" x="16" y="173.5" width="44.5" height="23.5"/>
+                    <rect key="frame" x="16" y="218.5" width="44.5" height="23.5"/>
                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qcC-2C-Ep4">
-                    <rect key="frame" x="263" y="168" width="80" height="35"/>
+                    <rect key="frame" x="263" y="213" width="80" height="35"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="80" id="LBf-t0-EWi"/>
                         <constraint firstAttribute="height" constant="35" id="yTt-Pm-Kie"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="17"/>
-                    <state key="normal" title="Send It"/>
+                    <state key="normal" title="Remind"/>
                     <connections>
                         <action selector="drinkWaterButtonPressed:" destination="-1" eventType="touchUpInside" id="FCq-De-hhH"/>
                     </connections>
                 </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="txh-4T-uxS">
-                    <rect key="frame" x="0.0" y="223" width="375" height="444"/>
+                    <rect key="frame" x="0.0" y="268" width="375" height="399"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
             </subviews>
@@ -64,9 +58,9 @@
                 <constraint firstItem="9IC-nf-wp2" firstAttribute="top" secondItem="SYl-gK-n4P" secondAttribute="bottom" constant="20" id="2WL-VM-uu5"/>
                 <constraint firstItem="txh-4T-uxS" firstAttribute="top" secondItem="qcC-2C-Ep4" secondAttribute="bottom" constant="20" id="4GE-1s-pIT"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="txh-4T-uxS" secondAttribute="bottom" id="Bk8-vL-atJ"/>
-                <constraint firstItem="SYl-gK-n4P" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="50" id="Nxu-p1-lZq"/>
+                <constraint firstItem="SYl-gK-n4P" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="30" id="Nxu-p1-lZq"/>
                 <constraint firstItem="SYl-gK-n4P" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="O8u-NZ-HCY"/>
-                <constraint firstAttribute="trailing" secondItem="SYl-gK-n4P" secondAttribute="trailing" constant="32" id="SNi-UX-WSx"/>
+                <constraint firstAttribute="trailing" secondItem="SYl-gK-n4P" secondAttribute="trailing" constant="25" id="SNi-UX-WSx"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="txh-4T-uxS" secondAttribute="trailing" id="SdE-hO-eMZ"/>
                 <constraint firstItem="txh-4T-uxS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="UHa-Fx-H3m"/>
                 <constraint firstItem="qcC-2C-Ep4" firstAttribute="centerY" secondItem="9IC-nf-wp2" secondAttribute="centerY" id="eoA-6U-Dqt"/>

@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DrinkWater/homeViewController.swift"
-            timestampString = "585370349.491551"
+            timestampString = "585503860.799836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "sendMessage(contact:)"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "reloadData()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,12 +26,76 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DrinkWater/homeViewController.swift"
-            timestampString = "585370349.491937"
+            timestampString = "585503860.799927"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "fetchContacts()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DrinkWater/homeViewController.swift"
+            timestampString = "585503860.799969"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "fetchContacts()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in DrinkWater.homeViewController.(fetchContacts in _8D503C20D8744FBF9B1A8502A17B62CF)() -&gt; ()"
+                  moduleName = "DrinkWater"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jrodriguez01/Desktop/DrinkWater/DrinkWater/homeViewController.swift"
+                  timestampString = "585503424.857777"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "141"
+                  endingLineNumber = "141"
+                  offsetFromSymbolStart = "893">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.CNContact, Swift.UnsafeMutablePointer&lt;ObjectiveC.ObjCBool&gt;) -&gt; () in closure #1 (Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in DrinkWater.homeViewController.(fetchContacts in _8D503C20D8744FBF9B1A8502A17B62CF)() -&gt; ()"
+                  moduleName = "DrinkWater"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jrodriguez01/Desktop/DrinkWater/DrinkWater/homeViewController.swift"
+                  timestampString = "585503424.859697"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "142"
+                  endingLineNumber = "142"
+                  offsetFromSymbolStart = "203">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DrinkWater/homeViewController.swift"
+            timestampString = "585503860.800006"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "fetchContacts()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
