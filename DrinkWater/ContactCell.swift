@@ -22,7 +22,7 @@ class ContactCell: UITableViewCell {
         self.layer.backgroundColor = UIColor.clear.cgColor
         
         if isRecent {
-            thirstyMessageLabel.text = "\u{2605} " + thirstyMessages[Int.random(in: 0 ... 7)]
+            thirstyMessageLabel.text = "🍼 " + thirstyMessages[Int.random(in: 0 ... 7)]
         } else {
             thirstyMessageLabel.text = thirstyMessages[Int.random(in: 0 ... 7)]
         }

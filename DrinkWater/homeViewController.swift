@@ -52,6 +52,7 @@ class homeViewController: UIViewController {
         
         self.fetchContacts()
         
+        self.fetchedContactsList.sort(by: { $0.givenName < $1.givenName })
         self.contactList = recentContactsList + fetchedContactsList
         self.contactsTableView.reloadData()
         
@@ -142,6 +143,7 @@ class homeViewController: UIViewController {
                 try store.enumerateContacts(with: request, usingBlock: { (contact, stopPointer) in
                     self.fetchedContactsList.append(contact)
                     DispatchQueue.main.async {
+                        self.fetchedContactsList.sort(by: { $0.givenName < $1.givenName })
                         self.contactList = self.recentContactsList + self.fetchedContactsList
                         self.contactsTableView.reloadData()
                     }
@@ -163,7 +165,7 @@ class homeViewController: UIViewController {
         
         if let currentContact = self.currentContact {
             sendMessage(contact: currentContact)
-            let alert = UIAlertController(title: "Congratulations!", message: "Your message has been sent!", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: "Oh Baby!", message: "You just reminded your friend to drink water!", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
