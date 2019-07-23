@@ -18,6 +18,26 @@ struct waterMessages {
                     "Bitch stop masturbating and start drinking water",
                     "You drink cum, but not water?! Drink Water Slut.",
                     "Hi from David and Justin - Drink Water Creators.",
-                    "I swear I will murder your first born if you don't drink water. BITCH. Jk, but please drink water."
+                    "I swear I will murder your first born if you don't drink water. BITCH. Jk, but please drink water.",
+                    "Please drink water",
+                    "Drink water babe",
+                    "Stay hydrated loser",
+                    "Please venmo @Justin-Rodriguez-39 or @Davidhho 🙏",
+                    "I love you. Drink Water",
+                    "DRINK WATER NOW!!",
+                    "HEY YOU DRINK WATER!",
+                    "Pleeeaaaase Drink water",
+                    "Water is the way",
+                    "Well look at the time its DrinkWaterBitch o'clock",
+                    "Drink👏Water👏Bitch👏",
+                    "hydrated not diedrate",
+                    "👅💦🍼",
+                    "Spill Tea, Drink Water",
+                    "Stop masturbating. Drink water",
+                    "Hydration 2020",
+                    "Pay for Tinder but not a water bottle? C'mon",
+                    "Stay Moist",
+                    "Stay Wet",
+                    "Drink Water O Whateva"
                     ]
 }
