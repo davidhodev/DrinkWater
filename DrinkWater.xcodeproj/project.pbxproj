@@ -51,6 +51,7 @@
 		A51BB6F31DE62116535A25D1 /* Pods-DrinkWaterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrinkWaterTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DrinkWaterTests/Pods-DrinkWaterTests.release.xcconfig"; sourceTree = "<group>"; };
 		C88785DE2E720461FADF42F0 /* Pods_DrinkWaterUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrinkWaterUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D70576FE677B26CCAD91CD1C /* Pods-DrinkWaterUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrinkWaterUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DrinkWaterUITests/Pods-DrinkWaterUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		DB73710622E6D10500682B39 /* DrinkWater.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DrinkWater.entitlements; sourceTree = "<group>"; };
 		DBA5340E7728CEB141B4B961 /* Pods_DrinkWaterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrinkWaterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBFD40E022C7CD520054253B /* DrinkWater.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrinkWater.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBFD40E322C7CD520054253B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +146,7 @@
 		DBFD40E222C7CD520054253B /* DrinkWater */ = {
 			isa = PBXGroup;
 			children = (
+				DB73710622E6D10500682B39 /* DrinkWater.entitlements */,
 				DBFD40E322C7CD520054253B /* AppDelegate.swift */,
 				DBFD40E522C7CD520054253B /* homeViewController.swift */,
 				DBFD411722C7F2030054253B /* drinkMessages.swift */,
@@ -250,6 +252,14 @@
 					DBFD40DF22C7CD520054253B = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					DBFD40F322C7CD520054253B = {
 						CreatedOnToolsVersion = 9.2;
@@ -373,9 +383,10 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-DrinkWater/Pods-DrinkWater-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-DrinkWater/Pods-DrinkWater-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -383,12 +394,13 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DrinkWater/Pods-DrinkWater-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DrinkWater/Pods-DrinkWater-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -560,6 +572,7 @@
 			baseConfigurationReference = 2D96F21F875800E5F2007947 /* Pods-DrinkWater.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DrinkWater/DrinkWater.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8437TMTXLQ;
 				INFOPLIST_FILE = DrinkWater/Info.plist;
@@ -576,6 +589,7 @@
 			baseConfigurationReference = 9B383D1939957D293D412D78 /* Pods-DrinkWater.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DrinkWater/DrinkWater.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8437TMTXLQ;
 				INFOPLIST_FILE = DrinkWater/Info.plist;

@@ -22,9 +22,9 @@ class ContactCell: UITableViewCell {
         self.layer.backgroundColor = UIColor.clear.cgColor
         
         if isRecent {
-            thirstyMessageLabel.text = "🍼 " + thirstyMessages[Int.random(in: 0 ... thirstyMessages.count - 1)]
+            thirstyMessageLabel.text = "🍼 " + thirstyMessages[Int(arc4random()) % thirstyMessages.count]
         } else {
-            thirstyMessageLabel.text = thirstyMessages[Int.random(in: 0 ... thirstyMessages.count - 1)]
+            thirstyMessageLabel.text = thirstyMessages[Int(arc4random()) % thirstyMessages.count]
         }
         test.text = "\(contact.givenName) \(contact.familyName)"
         guard let phoneNumber = contact.phoneNumbers.first?.value.stringValue else {

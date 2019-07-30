@@ -6,6 +6,9 @@ PODS:
   - Firebase/Database (4.13.0):
     - Firebase/Core
     - FirebaseDatabase (= 4.1.5)
+  - Firebase/Messaging (4.13.0):
+    - Firebase/Core
+    - FirebaseMessaging (= 2.2.0)
   - FirebaseAnalytics (4.2.0):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
@@ -19,7 +22,15 @@ PODS:
     - leveldb-library (~> 1.18)
   - FirebaseInstanceID (2.0.10):
     - FirebaseCore (~> 4.0)
+  - FirebaseMessaging (2.2.0):
+    - FirebaseAnalytics (~> 4.1)
+    - FirebaseCore (~> 4.0)
+    - FirebaseInstanceID (~> 2.0)
+    - GoogleToolboxForMac/Logger (~> 2.1)
+    - Protobuf (~> 3.5)
   - GoogleToolboxForMac/Defines (2.1.4)
+  - GoogleToolboxForMac/Logger (2.1.4):
+    - GoogleToolboxForMac/Defines (= 2.1.4)
   - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
     - GoogleToolboxForMac/Defines (= 2.1.4)
   - leveldb-library (1.20)
@@ -28,23 +39,27 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
+  - Protobuf (3.5.0)
 
 DEPENDENCIES:
   - Alamofire
   - Firebase/Core
   - Firebase/Database
+  - Firebase/Messaging
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Alamofire
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
     - FirebaseDatabase
     - FirebaseInstanceID
+    - FirebaseMessaging
     - GoogleToolboxForMac
     - leveldb-library
     - nanopb
+    - Protobuf
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
@@ -53,10 +68,12 @@ SPEC CHECKSUMS:
   FirebaseCore: 90cb1c53d69b556f112a1bf72b5fcfaad7650790
   FirebaseDatabase: 5f0bc6134c5c237cf55f9e1249d406770a75eafd
   FirebaseInstanceID: 8d20d890d65c917f9f7d9950b6e10a760ad34321
+  FirebaseMessaging: 75cdb862e86c30e0913a2ff307e48d49357c5b73
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
 
-PODFILE CHECKSUM: 6607658d5c05fe6d9fe09e7b8f13240e794271f9
+PODFILE CHECKSUM: 5182a45532ed863edf03cb33270ae97399b446b8
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.7.5
