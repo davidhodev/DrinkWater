@@ -118,7 +118,9 @@ class homeViewController: UIViewController {
     }
     
     func manageRecentContacts(contact: CNContact) {
-        recentContactsList.insert(contact, at: 0)
+        if !recentContactsList.contains(contact) {
+            recentContactsList.insert(contact, at: 0)
+        }
         if recentContactsList.count > 5 {
             recentContactsList.removeLast(1)
         }
